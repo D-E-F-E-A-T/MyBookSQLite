@@ -40,45 +40,18 @@ public class CadastrarBooks extends AppCompatActivity {
     public  void  salvar(View v) {
         BancoHelper db = new BancoHelper(this);
         Livro livro= new Livro(titulo.getText().toString(), autor.getText().toString(), Integer.parseInt(ano.getText().toString()), Float.parseFloat(String.valueOf(nota.getRating())));
-        Log.i("BANANINHA", livro.toString());
+
+        //Log.i("BANANINHA", livro.toString());
 
         db.save(livro);
         Log.i("BANANINHA", "SALVO NO BD");
-        //setResult(RESULT_OK, intent);
+        setResult(RESULT_OK);
         finish();
-        Snackbar snackbar = Snackbar.make((View) v.getParent(), "Livro Cadastrado com Sucesso", Snackbar.LENGTH_SHORT);
-        snackbar.show();
     }
     public  void  cancelar(View v){
-
         Log.i("BANANINHA", "OPERACAO CANCELADA");
         finish();
-        Snackbar  snackbar = Snackbar.make((View) v.getParent(), "Operacao Cancelada", Snackbar.LENGTH_SHORT);
-        snackbar.show();
-
-
+        setResult(RESULT_CANCELED);
     }
-    /*public void onclick(View v){
-        BancoHelper db = new BancoHelper(this);
-        Intent intent=null;
 
-        if(v.getId()==salvar.getId()){
-
-            Livro livro= new Livro(titulo.getText().toString(), autor.getText().toString(), Integer.parseInt(ano.getText().toString()), Float.parseFloat(String.valueOf(nota.getRating())));
-            Log.i("BANANINHA", livro.toString());
-
-            db.save(livro);
-            Log.i("BANANINHA", "SALVO NO BD");
-            //setResult(RESULT_OK, intent);
-            finish();
-            Snackbar snackbar = Snackbar.make((View) v.getParent(), "Livro Cadastrado com Sucesso", 100);
-            snackbar.show();
-        }else if (v.getId()==cancelar.getId()){
-            //setResult(RESULT_CANCELED);
-            finish();
-            Snackbar  snackbar = Snackbar.make((View) v.getParent(), "Operacao Cancelada", 1000);
-            snackbar.show();
-            Log.i("BANANINHA", "OPERACAO CANCELADA");
-        }
-    }*/
 }

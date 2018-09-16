@@ -23,29 +23,26 @@ public class MainActivity extends AppCompatActivity {
     }
     public  void botaoCadastrar(View v){// botao que cadastra novo livro
         Intent i = new Intent(this, CadastrarBooks.class);
-        //startActivityForResult(i, CADASTRO);
-        startActivity(i);
+        startActivityForResult(i,CADASTRO);
     }
     public  void botaoListar(View v){//Listar Livros
         Log.i("BANANINHA", "ENTROU NA TELA DE LISTAR LIVROS");
         Intent i = new Intent(this, ListarBooks.class);
         startActivity(i);
-        Snackbar  snackbar = Snackbar.make((View) v.getParent(), "Botao Listar", Snackbar.LENGTH_INDEFINITE);
-        snackbar.show();
-
     }
-   /* @Override
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        View v = null;
+        View v = findViewById(R.id.telacadastrar);
         if(resultCode==RESULT_OK) {
-            Toast.makeText(this, "Cadastro Realizado", Toast.LENGTH_SHORT).show();
-            Snackbar  snackbar = Snackbar.make((View) v.getParent(), "Botao Listar", Toast.LENGTH_SHORT);
+            //Toast.makeText(this, "Cadastro Realizado", Toast.LENGTH_SHORT).show();
+            Snackbar  snackbar = Snackbar.make((View) v.getParent(), "Livro Cadastrado com Sucesso", Snackbar.LENGTH_SHORT);
             snackbar.show();
         }else if (resultCode==RESULT_CANCELED){
-            Toast.makeText(this, "Operação Cancelada", Toast.LENGTH_SHORT).show();
-            Snackbar  snackbar = Snackbar.make((View) v.getParent(), "Botao Listar", Toast.LENGTH_SHORT);
+            //Toast.makeText(this, "Operação Cancelada", Toast.LENGTH_SHORT).show();
+            Snackbar  snackbar = Snackbar.make((View) v.getParent(), "Operação Cancelada", Snackbar.LENGTH_SHORT);
             snackbar.show();
         }
-    }*/
+    }
 
 }

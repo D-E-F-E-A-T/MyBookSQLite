@@ -1,15 +1,13 @@
 package br.eaj.tuany.mybooksqlite;
 
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import java.util.List;
-
 import modelo.BancoHelper;
 import modelo.Livro;
 import modelo.LivroContrato;
@@ -48,6 +46,7 @@ public class ListarBooks extends AppCompatActivity {
             tamanholista = listarlivro.size();
             if (indice ==0){
                 anterior.setClickable(false);
+                Toast.makeText(this, "Primeiro Registro", Toast.LENGTH_SHORT).show();
             }else{
                 anterior.setClickable(true);
             }
@@ -55,74 +54,36 @@ public class ListarBooks extends AppCompatActivity {
                 proximo.setClickable(true);
             }else{
                 proximo.setClickable(false);
+                Toast.makeText(this, "Último Registro", Toast.LENGTH_SHORT).show();
             }
 
             Log.i("BANANINHA", ""+indice);
             titulo.setText(listarlivro.get(indice).getTitulo().toString());
-
             autor.setText(listarlivro.get(indice).getAutor().toString());
-            ano.setText(String.valueOf(listarlivro.get(indice).getAno()));
+            ano.setText(String.valueOf(listarlivro.get(indice).getAno()).toString());
             nota.setText(String.valueOf(listarlivro.get(indice).getNota()).toString());
-           //Livro livro = listarlivro.get(indice);
-            /*titulo.setText(listarlivro.get(indice).getTitulo());
-            autor.setText(listarlivro.get(indice).getAutor());
-            ano.setText(listarlivro.get(indice).getAno());
-            nota.setText(String.valueOf(listarlivro.get(indice).getNota()));*/
+
         }else{
             anterior.setClickable(false);
             proximo.setClickable(false);
+            Toast.makeText(this, "Nenhum Registro Encontrado", Toast.LENGTH_SHORT).show();
+
         }
     }
     public void anterior(View v){
        indice--;
        listadelivros();
-       if(indice==0){
+       /*if(indice==0){
            Snackbar sb = Snackbar.make((View) v.getParent(), "Primeiro Registro",Snackbar.LENGTH_LONG);
            sb.show();
-       }
+       }*/
 
     }
 
     public void proximo(View v) {
         indice++;
         listadelivros();
-        ///Log.i("BANANINHA", " primeiro livro: " + LivroContrato.LivroEntry._COUNT);
-
     }
 
-    /*private void  atualizar(int i){
-        Log.i("BANANINHA", "NO ATUALIZAR");
 
-        titulo.setText(listarlivro.get(i).getTitulo());
-        autor.setText(listarlivro.get(i).getAutor());
-        ano.setText(listarlivro.get(i).getAno());
-        nota.setText(String.valueOf(listarlivro.get(i).getNota()));
-    }*/
-
-
-    /*private void  atualizar(int i){
-        titulo.setText(listarlivro.get(i).getTitulo());
-        autor.setText(listarlivro.get(i).getAutor());
-        ano.setText(listarlivro.get(i).getAno());
-        nota.setText(String.valueOf(listarlivro.get(i).getNota()));
-    }
-    public void anterior(View v){
-        if(livroatual == 0){
-            Snackbar snackbar = Snackbar.make((View) v.getParent(), "Primeiro registro", Snackbar.LENGTH_SHORT);
-            snackbar.show();
-        }else{
-            atualizar(livroatual - 1);
-            livroatual--;
-        }
-    }
-
-    public void proximo(View v){
-        if(livroatual == listarlivro.size()-1){
-            Snackbar snackbar = Snackbar.make((View) v.getParent(), "Último registro", Snackbar.LENGTH_SHORT);
-            snackbar.show();
-        }else{
-            atualizar(livroatual + 1);
-            livroatual++;
-        }
-    }*/
 }
